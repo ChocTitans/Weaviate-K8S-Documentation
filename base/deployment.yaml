@@ -39,7 +39,7 @@ spec:
               envFrom:
                 secretRef:
                   name: weaviate-secret
-                  key: api_keys_users
+                  key: API_KEYS_USERS
             - name: AUTHENTICATION_APIKEY_ENABLED
               value: "true"
             - name: DEFAULT_VECTORIZER_MODULE
