@@ -26,29 +26,31 @@ spec:
             - http
           env:
             - name: WEAVIATE_HOST
-              ValueFrom:
+              valueFrom:
                 configMapKeyRef:
                   name: weaviate-configmap
                   key: WEAVIATE_HOST
             - name: AUTHENTICATION_APIKEY_ALLOWED_KEYS
-              ValueFrom:
-                secretRef:
+              valueFrom:
+                secretKeyRef:
                   name: weaviate-secret
                   key: ALLOWED_API_KEYS
-            - name: AUTHENTICATION_APIKEY_USERS
-              ValueFrom:
-                secretRef:
-                  name: weaviate-secret
-                  key: api_keys_users
             - name: AUTHENTICATION_APIKEY_ENABLED
               value: "true"
+            - name: AUTHENTICATION_APIKEY_USERS
+              valueFrom:
+                secretKeyRef:
+                  name: weaviate-secret
+                  key: API_KEYS_USERS
+            - name: CLUSTER_HOSTNAME
+              value: node1
             - name: DEFAULT_VECTORIZER_MODULE
               value: text2vec-huggingface
             - name: ENABLE_MODULES
-              value: text2vec-huggingface
+              value: text2vec-huggingface # secret
             - name: HUGGINGFACE_APIKEY
-              ValueFrom:
-                secretRef:
+              valueFrom:
+                secretKeyRef:
                   name: weaviate-secret
                   key: HUGGINGFACE_APIKEY
             - name: LOG_LEVEL
@@ -57,7 +59,7 @@ spec:
               value: /var/lib/weaviate
             - name: QUERY_DEFAULTS_LIMIT
               value: "25"
-          image: "semitechnologies/weaviate:$WEAVIATE_IMAGE_VERSION"
+          image: semitechnologies/weaviate:1.20.5
           name: weaviate
           ports:
             - containerPort: 8080
