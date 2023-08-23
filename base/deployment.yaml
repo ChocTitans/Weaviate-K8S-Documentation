@@ -26,20 +26,20 @@ spec:
             - http
           env:
             - name: WEAVIATE_HOST
-              env:
+              ValueFrom:
                 configMapKeyRef:
                   name: weaviate-configmap
                   key: WEAVIATE_HOST
             - name: AUTHENTICATION_APIKEY_ALLOWED_KEYS
-              envFrom:
+              ValueFrom:
                 secretRef:
                   name: weaviate-secret
                   key: ALLOWED_API_KEYS
             - name: AUTHENTICATION_APIKEY_USERS
-              envFrom:
+              ValueFrom:
                 secretRef:
                   name: weaviate-secret
-                  key: API_KEYS_USERS
+                  key: api_keys_users
             - name: AUTHENTICATION_APIKEY_ENABLED
               value: "true"
             - name: DEFAULT_VECTORIZER_MODULE
@@ -47,7 +47,7 @@ spec:
             - name: ENABLE_MODULES
               value: text2vec-huggingface
             - name: HUGGINGFACE_APIKEY
-              envFrom:
+              ValueFrom:
                 secretRef:
                   name: weaviate-secret
                   key: HUGGINGFACE_APIKEY
