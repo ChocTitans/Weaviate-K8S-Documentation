@@ -50,7 +50,7 @@ spec:
               envFrom:
                 secretRef:
                   name: weaviate-secret
-                  key: HUGGINGFACE_APIKEY
+                  key: huggingface_apikey
             - name: LOG_LEVEL
               value: debug
             - name: PERSISTENCE_DATA_PATH
