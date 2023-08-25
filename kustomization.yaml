@@ -13,8 +13,3 @@ configMapGenerator:
 - name: weaviate-configmap
   envs:
   - ./configmap.env
-
-secretGenerator:
-- name: weaviate-secret
-  envs:
-  - ./secret.env
