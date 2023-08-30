@@ -113,6 +113,9 @@ spec:
         - name: weaviate-config
           configMap:
             name: weaviate-config
+        - name: weaviate-data
+          persistentVolumeClaim:
+            claimName: weaviate-data
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -125,7 +128,3 @@ spec:
                   - weaviate
               topologyKey: kubernetes.io/hostname
             weight: 1
-      volumes:
-        - name: weaviate-data
-          persistentVolumeClaim:
-            claimName: weaviate-data
