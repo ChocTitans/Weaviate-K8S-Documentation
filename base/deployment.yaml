@@ -59,7 +59,12 @@ spec:
               value: /var/lib/weaviate
             - name: QUERY_DEFAULTS_LIMIT
               value: "25"
-          image: semitechnologies/weaviate:1.20.5
+            - name: AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: weaviate-configmap
+                  key: WEAVIATE_ANONYMOUS_ACCESS_ENABLED              
+          image: semitechnologies/weaviate:$WEAVIATE_IMAGE_VERSION
           name: weaviate
           ports:
             - containerPort: 8080
