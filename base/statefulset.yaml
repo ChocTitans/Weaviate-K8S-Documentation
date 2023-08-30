@@ -55,7 +55,7 @@ spec:
           - name: WEAVIATE_HOST
             valueFrom:
               configMapKeyRef:
-                name: weaviate-configmap
+                name: weaviate-config
                 key: WEAVIATE_HOST            
           - name: CLUSTER_DATA_BIND_PORT
             value: "7001"
@@ -82,7 +82,7 @@ spec:
           - name: AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED
             valueFrom:
               configMapKeyRef:
-                name: weaviate-configmap
+                name: weaviate-config
                 key: WEAVIATE_ANONYMOUS_ACCESS_ENABLED             
         ports:
           - containerPort: 8080
