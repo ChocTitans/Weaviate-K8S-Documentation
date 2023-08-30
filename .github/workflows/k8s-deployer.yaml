@@ -53,8 +53,8 @@ jobs:
       - name: Update Weaviate-app Image
         run: |
           export WEAVIATE_IMAGE_VERSION=${{ vars.WEAVIATE_IMAGE_VERSION }}
-          envsubst < ./base/deployment.yaml > ./base/deployment_updated.yaml
-          mv ./base/deployment_updated.yaml ./base/deployment.yaml
+          envsubst < ./base/statefulset.yaml > ./base/statefulset_updated.yaml
+          mv ./base/statefulset_updated.yaml ./base/statefulset.yaml
           
       - name: Kustomize build & apply
         run: |
