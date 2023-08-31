@@ -52,7 +52,7 @@ jobs:
                     
       - name: Update Weaviate-app Image
         run: |
-          export WEAVIATE_IMAGE_VERSION=${{ vars.WEAVIATE_IMAGE_VERSION }}
+          export IMAGE_VERSION=${{ vars.IMAGE_VERSION }}
           envsubst < ./base/statefulset.yaml > ./base/statefulset_updated.yaml
           mv ./base/statefulset_updated.yaml ./base/statefulset.yaml
           

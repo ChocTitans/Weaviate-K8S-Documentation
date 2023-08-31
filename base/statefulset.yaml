@@ -34,7 +34,7 @@ spec:
         command: ["sysctl", "-w", "vm.max_map_count=524288", "vm.overcommit_memory=1" ]
       containers:
       - name: weaviate
-        image: 'docker.io/semitechnologies/weaviate:$WEAVIATE_IMAGE_VERSION'
+        image: 'docker.io/semitechnologies/weaviate:$IMAGE_VERSION'
         imagePullPolicy: IfNotPresent
         command: 
           - /bin/weaviate
